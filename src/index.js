@@ -1,19 +1,21 @@
 import express from 'express'
 import morgan from 'morgan'
 import { engine } from 'express-handlebars';
-import hbs from 'express-handlebars';
 import { fileURLToPath } from 'url';
 import path from 'path'
 
 const app = express();
 const port = 3000;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 // HTTP logger
 app.use(morgan('combined'))
 
 // Template engine
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 app.engine('hbs', engine({
   extname: '.hbs'
 }));
