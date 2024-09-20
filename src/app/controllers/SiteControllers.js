@@ -1,5 +1,4 @@
 class SiteControllers {
-
     // [GET] /
     index(req, res) {
         res.render('home');
@@ -7,8 +6,8 @@ class SiteControllers {
 
     // [GET] /search
     search(req, res) {
-        res.render('search');   
+        res.render('search');
     }
 }
 
-export default new SiteControllers;
+export default new SiteControllers();
