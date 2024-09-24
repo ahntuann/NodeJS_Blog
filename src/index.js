@@ -5,6 +5,10 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 
 import route from './routes/index.js';
+import * as db from './config//db/index.js';
+
+// connect to db
+db.connect();
 
 const app = express();
 const port = 3000;
@@ -37,5 +41,5 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });

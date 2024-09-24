@@ -1,7 +1,16 @@
+import Course from '../models/Course.js';
+import { multipleMongooseToObject } from '../../util/mongoose.js';
+
 class SiteControllers {
     // [GET] /
-    index(req, res) {
-        res.render('home');
+    index(req, res, next) {
+        Course.find({})
+            .then((courses) => {
+                res.render('home', {
+                    courses: multipleMongooseToObject(courses),
+                });
+            })
+            .catch(next);
     }
 
     // [GET] /search
